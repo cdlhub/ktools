@@ -93,7 +93,10 @@ private:
 		std::map<int, std::set<int> > &vulnerabilities_by_area_peril,
 		std::map<int, std::vector<float> > &vulnerabilities,
 		int intensity_bin_index) const;
-	
+
+    /**
+    * Print 1 (OUTPUT_STREAM_TYPE) to stdout.
+    */  
 	static void initOutputStream();
     int getVulnerabilityIndex(int intensity_bin_index, int damage_bin_index) const;
 };
