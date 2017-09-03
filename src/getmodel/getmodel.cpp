@@ -283,6 +283,7 @@ void getmodel::init(bool zip) {
 }
 
 void getmodel::doCdf(std::list<int> event_ids) {
+  // Open footprint index bin file
   FILE *fin;
   if (_zip) {
     fin = fopen(ZFOOTPRINT_IDX_FILE, "rb");
@@ -294,6 +295,7 @@ void getmodel::doCdf(std::list<int> event_ids) {
     exit(EXIT_FAILURE);
   }
 
+  // Loads footprint event indices
   EventIndex event_index;
   std::map<int, EventIndex> event_index_by_event_id;
   while (fread(&event_index, sizeof(event_index), 1, fin) != 0) {
@@ -303,6 +305,7 @@ void getmodel::doCdf(std::list<int> event_ids) {
   fclose(fin);
   initOutputStream();
 
+  // 
   if (_has_intensity_uncertainty) {
     if (_zip)
       doCdfInnerz(event_ids, event_index_by_event_id);
