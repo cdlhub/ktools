@@ -54,6 +54,13 @@ public:
 
     getmodel();
     ~getmodel();
+
+    /**
+    * Reads exposures ('items' file), vulnerabilites ('vulnerability' file),
+    * and interpolation damage values ('damage bin dictionary' file).
+    *
+    * @param zip Flag to indicate if 'footprint' file is zipped.
+    */
     void init(bool zip);
 	void doCdf(std::list<int> event_ids);
 
@@ -70,10 +77,30 @@ private:
     int _num_damage_bins = -1;
     int _has_intensity_uncertainty = false;
     Result* _temp_results;
-    bool _zip = false;
+    bool _zip = false; ///< Flag to indicate if footprint file is zipped.
+
+    /**
+    * Reads vulnerabilities from 'vulnerabilities' file.
+    * 
+    * @param v Set of vulnerability IDs to filter vulnerabilities to retreive from 'vulnerabilities' file.
+    */
     void getVulnerabilities(const std::set<int> &v);
+
+    /**
+    * Reads interpolation damage values from 'damage bin dictionary' file.
+    */
     void getDamageBinDictionary();
+
+    /**
+    * Reads the exposures (from 'items' file) and generate a set of vulnerabilities by area peril
+    *
+    * @param v Empty set that will contain all vulnerabilities read from 'items' file when the function returns.
+    */
     void getItems(std::set<int> &v);
+
+    /**
+    * Reads number of intensity bins and hazard intensity uncertainty flag.
+    */
 	void getIntensityInfo();
     void doCdfInner(std::list<int> &event_ids, std::map<int, EventIndex> &event_index_by_event_id);
     void doCdfInnerNoIntensityUncertainty(std::list<int> &event_ids, std::map<int, EventIndex> &event_index_by_event_id);
@@ -95,7 +122,7 @@ private:
 		int intensity_bin_index) const;
 
     /**
-    * Print 1 (OUTPUT_STREAM_TYPE) to stdout.
+    * Prints 1 (OUTPUT_STREAM_TYPE) to stdout.
     */  
 	static void initOutputStream();
     int getVulnerabilityIndex(int intensity_bin_index, int damage_bin_index) const;

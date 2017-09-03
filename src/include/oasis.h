@@ -264,9 +264,8 @@ struct EventRow
 struct EventIndex
 {
 	int event_id;
-	long long offset; /**< Event index in footprint binary file. */
-	long long size;	/**< Full footprint data size in footprint binary file.
-					* This is used to get the number of footprint records for the given event. */
+	long long offset; ///< Event index in footprint binary file.
+	long long size;	///< Full footprint data size in footprint binary file. This is used to get the number of footprint records for the given event.
 };
 
 #pragma pack(pop)
