@@ -58,7 +58,11 @@ Author: Ben Matharu  email: ben.matharu@oasislmf.org
 #define fltell ftell
 #endif 
 
-#define OAFLOAT float
+// Slowly where applicable we will replace int and OASIS_FLOAT references with
+// OASIS_INT and OASIS_OASIS_FLOAT so its easy to change the size of the streams 
+typedef int32_t OASIS_INT ;
+typedef float OASIS_FLOAT;
+
 
 const int mean_idx = -1;
 const int std_dev_idx = -2;
@@ -84,9 +88,9 @@ struct damagecdfrec {
 
 struct damagebindictionary {
         int bin_index;
-        float bin_from;
-        float bin_to;
-        float interpolation;
+        OASIS_FLOAT bin_from;
+        OASIS_FLOAT bin_to;
+        OASIS_FLOAT interpolation;
         int interval_type;
 };
 
@@ -94,19 +98,19 @@ struct gulitemSampleslevel {
 	int event_id;
 	int item_id;
 	int sidx;		// This has be stored for thresholds cannot be implied
-	float loss;		// may want to cut down to singe this causes 4 byte padding for allignment 
+	OASIS_FLOAT loss;		// may want to cut down to singe this causes 4 byte padding for allignment 
 };
 struct gulcoverageSampleslevel {
 	int event_id;
 	int coverage_id;
 	int sidx;		// This has be stored for thresholds cannot be implied
-	float loss;		// may want to cut down to singe this causes 4 byte padding for allignment
+	OASIS_FLOAT loss;		// may want to cut down to singe this causes 4 byte padding for allignment
 };
 
 struct gulSampleslevelEventRec {
 	int item_id;
 	int sidx;		// This has be stored for thresholds cannot be implied
-	float loss;		// may want to cut down to singe this causes 4 byte padding for allignment
+	OASIS_FLOAT loss;		// may want to cut down to singe this causes 4 byte padding for allignment
 };
 struct gulSampleslevelHeader {
 	int event_id;
@@ -116,17 +120,17 @@ struct gulSampleslevelHeader {
 struct summarySampleslevelHeader {
 	int event_id;
 	int summary_id;
-	float expval;				// exposure value
+	OASIS_FLOAT expval;				// exposure value
 };
 
 struct gulSampleslevelRec {
 	int sidx;		// This has be stored for thresholds cannot be implied
-	float loss;		// may want to cut down to singe this causes 4 byte padding for allignment
+	OASIS_FLOAT loss;		// may want to cut down to singe this causes 4 byte padding for allignment
 };
 
 struct sampleslevelRec {
 	int sidx;		
-	float loss;			
+	OASIS_FLOAT loss;			
 };
 
 
@@ -143,7 +147,7 @@ struct fmlevelhdr {
 
 struct fmlevelrec {
 	int sidx;
-	float loss;
+	OASIS_FLOAT loss;
 };
 
 struct exposure{
@@ -151,7 +155,7 @@ struct exposure{
 	int areaperil_id;
 	int vulnerability_id;
 	int group_id;
-	float tiv;
+	OASIS_FLOAT tiv;
 };
 
 struct item {
@@ -164,7 +168,7 @@ struct item {
 
 struct coverage {
 	int id;
-	float tiv;
+	OASIS_FLOAT tiv;
 };
 
 struct occurrence {
@@ -190,14 +194,14 @@ struct fm_profile {
 	int calcrule_id;
 	int allocrule_id;
 	int ccy_id;
-	float deductible;
-	float limits;
-	float share_prop_of_lim;
-	float deductible_prop_of_loss;
-	float limit_prop_of_loss;
-	float deductible_prop_of_tiv;
-	float limit_prop_of_tiv;
-	float deductible_prop_of_limit;
+	OASIS_FLOAT deductible;
+	OASIS_FLOAT limits;
+	OASIS_FLOAT share_prop_of_lim;
+	OASIS_FLOAT deductible_prop_of_loss;
+	OASIS_FLOAT limit_prop_of_loss;
+	OASIS_FLOAT deductible_prop_of_tiv;
+	OASIS_FLOAT limit_prop_of_tiv;
+	OASIS_FLOAT deductible_prop_of_limit;
 };
 
 struct fm_programme {
@@ -239,7 +243,7 @@ struct Vulnerability
 	int vulnerability_id;
 	int intensity_bin_id;
 	int damage_bin_id;
-	float probability;
+	OASIS_FLOAT probability;
 };
 
 struct Periods
@@ -255,7 +259,7 @@ struct EventRow
 {
 	int areaperil_id;
 	int intensity_bin_id;
-	float probability;
+	OASIS_FLOAT probability;
 };
 
 /**
