@@ -58,11 +58,12 @@ Author: Ben Matharu  email: ben.matharu@oasislmf.org
 #define fltell ftell
 #endif 
 
+// We made a design decision that our streams will use 4 byte floats and 4 byte integers.
+// This is to limit the volume of data fed through the system.
 // Slowly where applicable we will replace int and OASIS_FLOAT references with
-// OASIS_INT and OASIS_OASIS_FLOAT so its easy to change the size of the streams 
+// OASIS_INT and OASIS_FLOAT so its easy to change the size of the streams 
 typedef int32_t OASIS_INT ;
 typedef float OASIS_FLOAT;
-
 
 const int mean_idx = -1;
 const int std_dev_idx = -2;
