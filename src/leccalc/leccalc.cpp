@@ -274,6 +274,8 @@ void help()
 int main(int argc, char* argv[])
 {
 	bool useReturnPeriodFile = false;
+	// fout index are from anonymous enum:
+	// enum { AGG_FULL_UNCERTAINTY = 0, AGG_WHEATSHEAF, AGG_SAMPLE_MEAN, AGG_WHEATSHEAF_MEAN, OCC_FULL_UNCERTAINTY, OCC_WHEATSHEAF, OCC_SAMPLE_MEAN, OCC_WHEATSHEAF_MEAN };
 	FILE *fout[] = { nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr };
 
 	std::string subfolder;
