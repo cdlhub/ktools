@@ -19,3 +19,6 @@ missing
 VERSION
 build
 examples2
+
+# Visual Studio Code
+.vscode/
