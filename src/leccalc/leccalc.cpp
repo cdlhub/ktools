@@ -197,7 +197,10 @@ void doit(const std::string &subfolder, FILE **fout, bool useReturnPeriodFile)
 	std::map<int, std::vector<int> > event_to_periods;
 	int totalperiods;
 	loadoccurence(event_to_periods,totalperiods);
+
+	// Key: [summary, period, sample]. Value: Sum of losses
 	std::map<outkey2, OASIS_FLOAT> agg_out_loss;
+	// Key: [summary, period, sample]. Value: Maximum loss
 	std::map<outkey2, OASIS_FLOAT> max_out_loss;
 
 	

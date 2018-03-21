@@ -201,6 +201,8 @@ void aggreports::fulluncertaintywithweighting(int handle, const std::map<outkey2
 void aggreports::fulluncertainty(int handle,const std::map<outkey2, OASIS_FLOAT> &out_loss)
 {
 	if (fout_[handle] == nullptr) return;
+
+	// Key: Summary ID. Value: List of losses.
 	std::map<int, lossvec> items;
 	for (auto x : out_loss) {
 		items[x.first.summary_id].push_back(x.second);
