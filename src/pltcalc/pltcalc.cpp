@@ -59,7 +59,7 @@ struct period_occ {
 };
 
 std::map<int, std::vector<period_occ> > m_occ;
-int date_algorithm_=0;
+int date_algorithm_ = 0;
 int samplesize_ = 0;
 
 void d(long long g, int &y, int &mm, int &dd)
@@ -100,9 +100,7 @@ void loadoccurrence()
 	}
 
 	fclose(fin);
-
 }
-
 
 struct outrec {
 	int summary_id;
@@ -113,6 +111,7 @@ struct outrec {
 	OASIS_FLOAT exp_value;
 	int occ_date_id;
 };
+
 void dopltcalc(const summarySampleslevelHeader &sh, const std::vector<sampleslevelRec> &vrec)
 {
 	static int j = 0;
